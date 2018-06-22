@@ -288,7 +288,7 @@ void setHighThreshold(int16_t threshold) {
 
 void setConversionReadyPinMode() {
 		mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_HI_THR, 15, 1);
-		mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_HO_THR, 15, 0);
+		mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_LO_THR, 15, 0);
     setComparatorPolarity(0);
     setComparatorQueueMode(0);
 }
@@ -315,7 +315,7 @@ uint16_t getValueFromBits(uint16_t extractFrom, int high, int length) {
 /** Show all the config register settings
  */
 void showConfigRegister() {
-	int val = mgos_i2c_read_reg_W(i2c, devAddr, MGOS_ADS1115_REG_CFG);
+	int val = mgos_i2c_read_reg_w(i2c, devAddr, MGOS_ADS1115_REG_CFG);
 	if (val != -1) {
 		uint16_t configRegister = (uint16_t) val;    
 	}
