@@ -127,7 +127,7 @@ void setGain(uint8_t gain);
 bool getMode();
 void setMode(bool mode);
 uint8_t getRate();
-void setRate(uint8_t rate);
+void setRate(uint16_t rate);
 bool getComparatorMode();
 void setComparatorMode(bool mode);
 bool getComparatorPolarity();
