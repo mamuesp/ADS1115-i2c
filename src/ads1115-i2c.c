@@ -217,8 +217,12 @@ void setComparatorMode(bool mode) {
 }
 
 bool getComparatorPolarity() {
-    int val = mgos_i2c_read_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_POL_BIT, buffer);
-    return buffer[0];
+		bool result = false;
+    int val = mgos_i2c_read_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_POL_BIT);
+    if (val != -1) {
+    	result = (bool) val;
+    }
+    return result;
 }
 
 void setComparatorPolarity(bool polarity) {
@@ -340,7 +344,7 @@ int mgos_i2c_read_reg_bit_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, u
 
 int mgos_i2c_read_reg_bit_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum) {
    	int result = -1;
-    int val = mgos_i2c_read_reg_w(iconn2c, addr, reg);
+    int val = mgos_i2c_read_reg_w(i2c, addr, reg);
     if (val != -1) {
    		uint16_t w = (uint16_t) val;
 			result = w & (1 << bitNum);
