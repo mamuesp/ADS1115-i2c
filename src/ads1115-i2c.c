@@ -315,12 +315,13 @@ uint16_t getValueFromBits(uint16_t extractFrom, int high, int length) {
 /** Show all the config register settings
  */
 void showConfigRegister() {
+	uint16_t confReg = 0;    
 	int val = mgos_i2c_read_reg_w(i2c, devAddr, MGOS_ADS1115_REG_CFG);
 	if (val != -1) {
-		uint16_t configRegister = (uint16_t) val;    
+		confReg = (uint16_t) val;    
 	}
 
-	LOG(LL_INFO, ("Register is: %d", configRegister));    
+	LOG(LL_INFO, ("Register is: 0x%04x", confReg));    
 	LOG(LL_INFO, ("OS:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_OS_BIT, 1)));    
 	LOG(LL_INFO, ("MUX:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH)));    
 	LOG(LL_INFO, ("PGA:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH)));    
