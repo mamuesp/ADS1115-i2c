@@ -185,7 +185,7 @@ bool getMode() {
 }
 
 void setMode(bool mode) {
-	if (mgos_i2c_write_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT, mode)) {
+	if (mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT, mode)) {
     devMode = mode;
   }
 }
