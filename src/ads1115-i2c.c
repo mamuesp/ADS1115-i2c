@@ -131,7 +131,7 @@ bool isConversionReady() {
 }
 
 void triggerConversion() {
-    mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_OS_BIT, 1);
+    mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_OS_BIT, 1);
 }
 
 uint8_t getMultiplexer() {
