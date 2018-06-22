@@ -325,7 +325,7 @@ void showConfigRegister() {
 	LOG(LL_INFO, ("OS:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_OS_BIT, 1)));    
 	LOG(LL_INFO, ("MUX:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH)));    
 	LOG(LL_INFO, ("PGA:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH)));    
-	LOG(LL_INFO, ("MODE:\t %d", getValueFromBits(configReconfReggister, MGOS_ADS1115_CFG_MODE_BIT, 1)));    
+	LOG(LL_INFO, ("MODE:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_MODE_BIT, 1)));    
 	LOG(LL_INFO, ("DR:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_DR_BIT, MGOS_ADS1115_CFG_DR_LENGTH)));    
 	LOG(LL_INFO, ("CMP_MODE:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_COMP_MODE_BIT, 1)));    
 	LOG(LL_INFO, ("CMP_POL:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_COMP_POL_BIT, 1)));    
@@ -356,7 +356,7 @@ int mgos_i2c_read_reg_bit_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, u
 int mgos_i2c_read_reg_bits_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length) {
    	int result = -1;
     int val = mgos_i2c_read_reg_b(conn, addr, reg);
-    if (b != -1) {
+    if (val != -1) {
     		uint8_t b = (uint8_t) val;
         uint8_t mask = ((1 << length) - 1) << (bitStart - length + 1);
         b &= mask;
@@ -416,7 +416,7 @@ bool mgos_i2c_write_reg_bits_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg
 		return result;
 }
 
-bool mgos_i2c_write_reg_bits_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum, uint8_t length, uint16_t value) {
+bool mgos_i2c_write_reg_bits_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length, uint16_t value) {
 		bool result = false;
 		int val = mgos_i2c_read_reg_w(conn, addr, reg);
     if (val != -1) {
