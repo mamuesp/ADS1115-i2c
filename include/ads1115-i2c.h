@@ -98,7 +98,7 @@ bool pollConversion(uint16_t max_retries);
 void triggerConversion();
 
 // Read the current CONVERSION register
-int16_t getConversion(bool triggerAndPoll=true);
+int16_t getConversion(bool triggerAndPoll);
 
 // Differential
 int16_t getConversionP0N1();
@@ -113,7 +113,7 @@ int16_t getConversionP2GND();
 int16_t getConversionP3GND();
 
 // Utility
-float getMilliVolts(bool triggerAndPoll=true);
+float getMilliVolts(bool triggerAndPoll);
 float getMvPerCount();
 
 // CONFIG register
