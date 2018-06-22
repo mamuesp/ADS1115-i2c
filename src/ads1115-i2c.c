@@ -3,14 +3,14 @@
 void init(uint8_t addr) {
 	devAddr = addr == 0 ? MGOS_ADS1115_ADD_DEFAULT : addr;
 
-  setMultiplexer(ADS1115_MUX_P0_N1);
-  setGain(ADS1115_PGA_2P048);
-  setMode(ADS1115_MODE_SINGLESHOT);
-  setRate(ADS1115_REGTE_128);
-  setComparatorMode(ADS1115_COMP_MODE_HYSTERESIS);
-  setComparatorPolarity(ADS1115_COMP_POL_ACTIVE_LOW);
-  setComparatorLatchEnabled(ADS1115_COMP_LAT_NON_LATCHING);
-  setComparatorQueueMode(ADS1115_COMP_QUE_DISABLE);
+  setMultiplexer(MGOS_ADS1115_MUX_P0_N1);
+  setGain(MGOS_ADS1115_PGA_2P048);
+  setMode(MGOS_ADS1115_MODE_SINGLESHOT);
+  setRate(MGOS_ADS1115_REGTE_128);
+  setComparatorMode(MGOS_ADS1115_COMP_MODE_HYSTERESIS);
+  setComparatorPolarity(MGOS_ADS1115_COMP_POL_ACTIVE_LOW);
+  setComparatorLatchEnabled(MGOS_ADS1115_COMP_LAT_NON_LATCHING);
+  setComparatorQueueMode(MGOS_ADS1115_COMP_QUE_DISABLE);
 }
 
 bool testConnection() {
@@ -34,42 +34,42 @@ int16_t getConversion(bool triggerAndPoll) {
 }
 
 int16_t getConversionP0N1() {
-    if (muxMode != MGOS_ADS1115_MUX_P0_N1) setMultiplexer(ADS1115_MUX_P0_N1);
+    if (muxMode != MGOS_ADS1115_MUX_P0_N1) setMultiplexer(MGOS_ADS1115_MUX_P0_N1);
     return getConversion();
 }
 
 int16_t getConversionP0N3() {
-    if (muxMode != MGOS_ADS1115_MUX_P0_N3) setMultiplexer(ADS1115_MUX_P0_N3);
+    if (muxMode != MGOS_ADS1115_MUX_P0_N3) setMultiplexer(MGOS_ADS1115_MUX_P0_N3);
     return getConversion();
 }
 
 int16_t getConversionP1N3() {
-    if (muxMode != MGOS_ADS1115_MUX_P1_N3) setMultiplexer(ADS1115_MUX_P1_N3);
+    if (muxMode != MGOS_ADS1115_MUX_P1_N3) setMultiplexer(MGOS_ADS1115_MUX_P1_N3);
     return getConversion();
 }
 
 int16_t getConversionP2N3() {
-    if (muxMode != MGOS_ADS1115_MUX_P2_N3) setMultiplexer(ADS1115_MUX_P2_N3);
+    if (muxMode != MGOS_ADS1115_MUX_P2_N3) setMultiplexer(MGOS_ADS1115_MUX_P2_N3);
     return getConversion();
 }
 
 int16_t getConversionP0GND() {
-    if (muxMode != MGOS_ADS1115_MUX_P0_NG) setMultiplexer(ADS1115_MUX_P0_NG);
+    if (muxMode != MGOS_ADS1115_MUX_P0_NG) setMultiplexer(MGOS_ADS1115_MUX_P0_NG);
     return getConversion();
 }
 
 int16_t getConversionP1GND() {
-    if (muxMode != MGOS_ADS1115_MUX_P1_NG) setMultiplexer(ADS1115_MUX_P1_NG);
+    if (muxMode != MGOS_ADS1115_MUX_P1_NG) setMultiplexer(MGOS_ADS1115_MUX_P1_NG);
     return getConversion();
 }
 
 int16_t getConversionP2GND() {
-    if (muxMode != MGOS_ADS1115_MUX_P2_NG) setMultiplexer(ADS1115_MUX_P2_NG);
+    if (muxMode != MGOS_ADS1115_MUX_P2_NG) setMultiplexer(MGOS_ADS1115_MUX_P2_NG);
     return getConversion();
 }
 
 int16_t getConversionP3GND() {
-    if (muxMode != MGOS_ADS1115_MUX_P3_NG) setMultiplexer(ADS1115_MUX_P3_NG);
+    if (muxMode != MGOS_ADS1115_MUX_P3_NG) setMultiplexer(MGOS_ADS1115_MUX_P3_NG);
     return getConversion();
 }
 
@@ -148,9 +148,9 @@ void setMultiplexer(uint16_t mux) {
   	muxMode = mux;
     if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
     	// Force a stop/start
-      setMode(ADS1115_MODE_SINGLESHOT);
+      setMode(MGOS_ADS1115_MODE_SINGLESHOT);
       getConversion();
-      setMode(ADS1115_MODE_CONTINUOUS);
+      setMode(MGOS_ADS1115_MODE_CONTINUOUS);
     }
   }
 }
@@ -169,9 +169,9 @@ void setGain(uint8_t gain) {
       pgaMode = gain;
          if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
             // Force a stop/start
-            setMode(ADS1115_MODE_SINGLESHOT);
+            setMode(MGOS_ADS1115_MODE_SINGLESHOT);
             getConversion();
-            setMode(ADS1115_MODE_CONTINUOUS);
+            setMode(MGOS_ADS1115_MODE_CONTINUOUS);
          }
     }
 }
