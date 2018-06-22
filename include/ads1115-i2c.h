@@ -5,6 +5,8 @@
 #include "mgos_app.h"
 #include "mgos_i2c.h"
 
+#define MGOS_I2CDEV_DEFAULT_READ_TIMEOUT 1000
+
 #define MGOS_ADS1115_ADDR_PIN_GND    0x48 // address pin low (GND)
 #define MGOS_ADS1115_ADDR_PIN_VDD    0x49 // address pin high (VCC)
 #define MGOS_ADS1115_ADDR_PIN_SDA    0x4A // address pin tied to SDA pin

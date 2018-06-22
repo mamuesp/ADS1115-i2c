@@ -28,7 +28,7 @@ bool pollConversion(uint16_t max_retries) {
 int16_t getConversion(bool triggerAndPoll) {
     if (triggerAndPoll && devMode == MGOS_ADS1115_MODE_SINGLESHOT) {
       triggerConversion();
-      pollConversion(I2CDEV_DEFAULT_READ_TIMEOUT);
+      pollConversion(MGOS_I2CDEV_DEFAULT_READ_TIMEOUT);
     }
     return mgos_i2c_read_reg_w(i2c, devAddr, MGOS_ADS1115_REG_CONV);
 }
