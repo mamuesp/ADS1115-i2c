@@ -35,42 +35,42 @@ int16_t getConversion(bool triggerAndPoll) {
 
 int16_t getConversionP0N1() {
     if (muxMode != MGOS_ADS1115_MUX_P0_N1) setMultiplexer(MGOS_ADS1115_MUX_P0_N1);
-    return getConversion();
+    return getConversion(true);
 }
 
 int16_t getConversionP0N3() {
     if (muxMode != MGOS_ADS1115_MUX_P0_N3) setMultiplexer(MGOS_ADS1115_MUX_P0_N3);
-    return getConversion();
+    return getConversion(true);
 }
 
 int16_t getConversionP1N3() {
     if (muxMode != MGOS_ADS1115_MUX_P1_N3) setMultiplexer(MGOS_ADS1115_MUX_P1_N3);
-    return getConversion();
+    return getConversion(true);
 }
 
 int16_t getConversionP2N3() {
     if (muxMode != MGOS_ADS1115_MUX_P2_N3) setMultiplexer(MGOS_ADS1115_MUX_P2_N3);
-    return getConversion();
+    return getConversion(true);
 }
 
 int16_t getConversionP0GND() {
     if (muxMode != MGOS_ADS1115_MUX_P0_NG) setMultiplexer(MGOS_ADS1115_MUX_P0_NG);
-    return getConversion();
+    return getConversion(true);
 }
 
 int16_t getConversionP1GND() {
     if (muxMode != MGOS_ADS1115_MUX_P1_NG) setMultiplexer(MGOS_ADS1115_MUX_P1_NG);
-    return getConversion();
+    return getConversion(true);
 }
 
 int16_t getConversionP2GND() {
     if (muxMode != MGOS_ADS1115_MUX_P2_NG) setMultiplexer(MGOS_ADS1115_MUX_P2_NG);
-    return getConversion();
+    return getConversion(true);
 }
 
 int16_t getConversionP3GND() {
     if (muxMode != MGOS_ADS1115_MUX_P3_NG) setMultiplexer(MGOS_ADS1115_MUX_P3_NG);
-    return getConversion();
+    return getConversion(true);
 }
 
 float getMilliVolts(bool triggerAndPoll) {
@@ -149,7 +149,7 @@ void setMultiplexer(uint16_t mux) {
     if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
     	// Force a stop/start
       setMode(MGOS_ADS1115_MODE_SINGLESHOT);
-      getConversion();
+      getConversion(true);
       setMode(MGOS_ADS1115_MODE_CONTINUOUS);
     }
   }
@@ -170,7 +170,7 @@ void setGain(uint8_t gain) {
          if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
             // Force a stop/start
             setMode(MGOS_ADS1115_MODE_SINGLESHOT);
-            getConversion();
+            getConversion(true);
             setMode(MGOS_ADS1115_MODE_CONTINUOUS);
          }
     }
