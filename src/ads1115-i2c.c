@@ -136,7 +136,7 @@ void triggerConversion() {
 
 uint8_t getMultiplexer() {
 		uint8_t muxMode = 0;
-    int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH);
+    int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH);
 		if (val != -1) {
 	    muxMode = (uint8_t) val;
 		}
@@ -144,7 +144,7 @@ uint8_t getMultiplexer() {
 }
 
 void setMultiplexer(uint16_t mux) {
-	if (mgos_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH, mux)) {
+	if (mgos_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH, mux)) {
   	muxMode = mux;
     if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
     	// Force a stop/start
@@ -157,7 +157,7 @@ void setMultiplexer(uint16_t mux) {
 
 uint8_t getGain() {
 	uint8_t pgaMode = 0;
-	int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH);
+	int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH);
 	if (val != -1)
     pgaMode = (uint8_t) val;
   }
@@ -165,7 +165,7 @@ uint8_t getGain() {
 }
 
 void setGain(uint8_t gain) {
-    if (I2Cdev::writeBitsW(devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH, gain)) {
+    if (I2Cdev::writeBitsW(devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH, gain)) {
       pgaMode = gain;
          if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
             // Force a stop/start
@@ -177,20 +177,20 @@ void setGain(uint8_t gain) {
 }
 
 bool getMode() {
-    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_MODE_BIT, buffer);
+    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT, buffer);
     devMode = buffer[0];
     return devMode;
 }
 
 void setMode(bool mode) {
-    if (I2Cdev::writeBitW(devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_MODE_BIT, mode)) {
+    if (I2Cdev::writeBitW(devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT, mode)) {
         devMode = mode;
     }
 }
 
 uint8_t getRate() {
 	uint8_t rate = 0;
-	int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_DR_BIT, MGOS_ADS1115_CFG_DR_LENGTH);
+	int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_DR_BIT, MGOS_ADS1115_CFG_DR_LENGTH);
 	if (val != -1) {
 		rate = (uint8_t) val;
 	}
@@ -198,12 +198,12 @@ uint8_t getRate() {
 }
 
 void setRate(uint16_t rate) {
-	mgos_i2c_write_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_DR_BIT, MGOS_ADS1115_CFG_DR_LENGTH, rate);
+	mgos_i2c_write_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_DR_BIT, MGOS_ADS1115_CFG_DR_LENGTH, rate);
 }
 
 bool getComparatorMode() {
     uint16_t mode = 0;
-    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_COMP_MODE_BIT);
+    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_MODE_BIT);
     if (val != -1) {
     	mode = (uint16_t) val;
     }
@@ -211,21 +211,21 @@ bool getComparatorMode() {
 }
 
 void setComparatorMode(bool mode) {
-		mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_DR_BIT, mode);
+		mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_DR_BIT, mode);
 }
 
 bool getComparatorPolarity() {
-    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_COMP_POL_BIT, buffer);
+    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_POL_BIT, buffer);
     return buffer[0];
 }
 
 void setComparatorPolarity(bool polarity) {
-		mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_COMP_POL_BIT, polarity);
+		mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_POL_BIT, polarity);
 }
 
 bool getComparatorLatchEnabled() {
 		bool enabled = false;
-    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_COMP_LAT_BIT);
+    int val = mgos_i2c_read_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_LAT_BIT);
     if (val != -1) {
     	enabled = (bool) val;
     }
@@ -233,12 +233,12 @@ bool getComparatorLatchEnabled() {
 }
 
 void setComparatorLatchEnabled(bool enabled) {
-		mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_COMP_LAT_BIT, enabled);
+		mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_LAT_BIT, enabled);
 }
 
 uint16_t getComparatorQueueMode() {
 		uint16_t mode = 0;
-    int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_COMP_QUE_BIT, MGOS_ADS1115_CFG_COMP_QUE_LENGTH);
+    int val = mgos_i2c_read_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_QUE_BIT, MGOS_ADS1115_CFG_COMP_QUE_LENGTH);
     if (val != -1) {
     	mode = (uint16_t) val;
     }
@@ -246,7 +246,7 @@ uint16_t getComparatorQueueMode() {
 }
 
 void setComparatorQueueMode(uint8_t mode) {
-    mgos_i2c_write_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFGIG, MGOS_ADS1115_CFG_COMP_QUE_BIT, MGOS_ADS1115_CFG_COMP_QUE_LENGTH, mode);
+    mgos_i2c_write_reg_bitsW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_COMP_QUE_BIT, MGOS_ADS1115_CFG_COMP_QUE_LENGTH, mode);
 }
 
 // *_THRESH registers
@@ -309,7 +309,7 @@ uint16_t getValueFromBits(uint16_t extractFrom, int high, int length) {
 /** Show all the config register settings
  */
 void showConfigRegister() {
-	int val = mgos_i2c_read_reg_W(i2c, devAddr, MGOS_ADS1115_REG_CFGIG);
+	int val = mgos_i2c_read_reg_W(i2c, devAddr, MGOS_ADS1115_REG_CFG);
 	if (val != -1) {
 		uint16_t configRegister = (uint16_t) val;    
 	}
