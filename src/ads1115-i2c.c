@@ -1,7 +1,7 @@
 #include "ads1115-i2c.h"
 
 void init(uint8_t addr) {
-	devAddr = addr == ? MGOS_ADS1115_ADD_DEFAULT : addr;
+	devAddr = addr == 0 ? MGOS_ADS1115_ADD_DEFAULT : addr;
 
   setMultiplexer(ADS1115_MUX_P0_N1);
   setGain(ADS1115_PGA_2P048);
