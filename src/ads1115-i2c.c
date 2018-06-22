@@ -156,7 +156,7 @@ void setMultiplexer(uint16_t mux) {
 }
 
 uint8_t getGain() {
-	uint8_t pgaMode = 0;
+	static uint8_t pgaMode = 0;
 	int val = mgos_i2c_read_reg_bits_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH);
 	if (val != -1)
     pgaMode = (uint8_t) val;
