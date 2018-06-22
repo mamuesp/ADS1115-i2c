@@ -121,7 +121,7 @@ float getMvPerCount();
 // CONFIG register
 bool isConversionReady();
 uint8_t getMultiplexer();
-void setMultiplexer(uint8_t mux);
+void setMultiplexer(uint16_t mux);
 uint8_t getGain();
 void setGain(uint8_t gain);
 bool getMode();
