@@ -322,14 +322,14 @@ void showConfigRegister() {
 
 	LOG(LL_INFO, ("Register is: 0x%04x", configRegister));    
 	LOG(LL_INFO, ("OS:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_OS_BIT, 1)));    
-	LOG(LL_INFO, ("MUX:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_MUX_BIT,ADS1115_CFG_MUX_LENGTH)));    
-	LOG(LL_INFO, ("PGA:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_PGA_BIT,ADS1115_CFG_PGA_LENGTH)));    
+	LOG(LL_INFO, ("MUX:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH)));    
+	LOG(LL_INFO, ("PGA:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH)));    
 	LOG(LL_INFO, ("MODE:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_MODE_BIT, 1)));    
-	LOG(LL_INFO, ("DR:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_DR_BIT,ADS1115_CFG_DR_LENGTH)));    
+	LOG(LL_INFO, ("DR:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_DR_BIT, MGOS_ADS1115_CFG_DR_LENGTH)));    
 	LOG(LL_INFO, ("CMP_MODE:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_COMP_MODE_BIT, 1)));    
 	LOG(LL_INFO, ("CMP_POL:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_COMP_POL_BIT, 1)));    
 	LOG(LL_INFO, ("CMP_LAT:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_COMP_LAT_BIT, 1)));    
-	LOG(LL_INFO, ("CMP_QUE:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_COMP_QUE_BIT,ADS1115_CFG_COMP_QUE_LENGTH)));    
+	LOG(LL_INFO, ("CMP_QUE:\t %d", getValueFromBits(configRegister, MGOS_ADS1115_CFG_COMP_QUE_BIT, MGOS_ADS1115_CFG_COMP_QUE_LENGTH)));    
 };
 
 int mgos_i2c_read_reg_bit_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum) {
