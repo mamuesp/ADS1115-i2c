@@ -144,7 +144,7 @@ uint8_t getMultiplexer() {
 }
 
 void setMultiplexer(uint16_t mux) {
-	if (mgos_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH, mux)) {
+	if (mgos_i2c_write_reg_bitW(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MUX_BIT, MGOS_ADS1115_CFG_MUX_LENGTH, mux)) {
   	muxMode = mux;
     if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
     	// Force a stop/start
