@@ -165,15 +165,15 @@ uint8_t getGain() {
 }
 
 void setGain(uint8_t gain) {
-    if (I2Cdev::writeBitsW(devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH, gain)) {
-      pgaMode = gain;
-         if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
-            // Force a stop/start
-            setMode(MGOS_ADS1115_MODE_SINGLESHOT);
-            getConversion(true);
-            setMode(MGOS_ADS1115_MODE_CONTINUOUS);
-         }
+	if (mgos_i2c_write_reg_bits_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_PGA_BIT, MGOS_ADS1115_CFG_PGA_LENGTH, gain)) {
+  	pgaMode = gain;
+    if (devMode == MGOS_ADS1115_MODE_CONTINUOUS) {
+    	// Force a stop/start
+      setMode(MGOS_ADS1115_MODE_SINGLESHOT);
+      getConversion(true);
+      setMode(MGOS_ADS1115_MODE_CONTINUOUS);
     }
+  }
 }
 
 bool getMode() {
