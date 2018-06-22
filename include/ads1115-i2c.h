@@ -90,8 +90,8 @@ uint8_t muxMode;
 uint8_t pgaMode;
 struct mgos_i2c *i2c;
 
-void init();
-bool test();
+void init(uint8_t addr);
+bool testConnection();
 
 // SINGLE SHOT utilities
 bool pollConversion(uint16_t max_retries);
