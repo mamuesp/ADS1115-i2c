@@ -1,3 +1,2 @@
-# devices-i2c
-Some IRAM functions handling some I2C devices.
 # ADS1115-i2c
+Adaption of the ADS1115 functionality over I2C.
