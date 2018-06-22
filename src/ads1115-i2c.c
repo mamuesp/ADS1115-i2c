@@ -316,6 +316,10 @@ uint16_t getValueFromBits(uint16_t extractFrom, int high, int length) {
    return shiftDown(extractFrom & mask, low); 
 }
 
+bool mgos_ADS1115_i2c_init(void) {
+  return true;
+}
+
 /** Show all the config register settings
  */
 void showConfigRegister() {

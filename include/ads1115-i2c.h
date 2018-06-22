@@ -150,6 +150,8 @@ void setHighThreshold(int16_t THRold);
 // DEBUG
 void showConfigRegister();
 
+bool mgos_ADS1115_i2c_init(void);
+
 // to lib
 int mgos_i2c_read_reg_bit_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum);
 
