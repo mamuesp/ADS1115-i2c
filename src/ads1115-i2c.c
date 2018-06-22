@@ -74,28 +74,30 @@ int16_t getConversionP3GND() {
 }
 
 float getMilliVolts(bool triggerAndPoll) {
+	float result = 0.0;
   switch (pgaMode) { 
     case MGOS_ADS1115_PGA_6P144:
-      return (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_6P144);
+      result = (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_6P144);
       break;    
     case MGOS_ADS1115_PGA_4P096:
-      return (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_4P096);
+      result = (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_4P096);
       break;             
     case MGOS_ADS1115_PGA_2P048:    
-      return (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_2P048);
+      result = (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_2P048);
       break;       
     case MGOS_ADS1115_PGA_1P024:     
-      return (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_1P024);
+      result = (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_1P024);
       break;       
     case MGOS_ADS1115_PGA_0P512:      
-      return (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_0P512);
+      result = (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_0P512);
       break;       
     case MGOS_ADS1115_PGA_0P256:           
     case MGOS_ADS1115_PGA_0P256B:          
     case MGOS_ADS1115_PGA_0P256C:      
-      return (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_0P256);
+      result = (getConversion(triggerAndPoll) * MGOS_ADS1115_MV_0P256);
       break;       
   }
+  return result;
 }
 
 float getMvPerCount() {
