@@ -177,15 +177,17 @@ void setGain(uint8_t gain) {
 }
 
 bool getMode() {
-    int val = mgos_i2c_read_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT, buffer);
-    devMode = buffer[0];
+    int val = mgos_i2c_read_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT);
+    if (val != -1) {
+	    devMode = (bool) val;
+    }
     return devMode;
 }
 
 void setMode(bool mode) {
-    if (I2Cdev::writeBitW(devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT, mode)) {
-        devMode = mode;
-    }
+	if (mgos_i2c_write_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_MODE_BIT, mode)) {
+    devMode = mode;
+  }
 }
 
 uint8_t getRate() {
