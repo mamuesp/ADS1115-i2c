@@ -15,7 +15,7 @@ void init(uint8_t addr) {
 
 bool testConnection() {
 	i2c = mgos_i2c_get_global();
-	mgos_i2c_read_reg_w(i2c, devAddr, MGOS_ADS1115_REG_CONV) != -1;
+	return (mgos_i2c_read_reg_w(i2c, devAddr, MGOS_ADS1115_REG_CONV) != -1);
 }
 
 bool pollConversion(uint16_t max_retries) {  
