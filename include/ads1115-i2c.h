@@ -151,21 +151,21 @@ void setHighThreshold(int16_t THRold);
 void showConfigRegister();
 
 // to lib
-int mgos_i2c_read_reg_bitB(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum);
+int mgos_i2c_read_reg_bit_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum);
 
-int mgos_i2c_read_reg_bitW(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum);
+int mgos_i2c_read_reg_bit_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum);
 
-int mgos_i2c_read_reg_bitsB(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length);
+int mgos_i2c_read_reg_bits_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length);
 
-int mgos_i2c_read_reg_bitsW(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length);
+int mgos_i2c_read_reg_bits_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length);
 
-bool mgos_i2c_write_reg_bitB(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum, uint8_t value);
+bool mgos_i2c_write_reg_bit_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum, uint8_t value);
 
-bool mgos_i2c_write_reg_bitW(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum, uint8_t value);
+bool mgos_i2c_write_reg_bit_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum, uint8_t value);
 
-bool mgos_i2c_write_reg_bitsB(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length, uint8_t value);
+bool mgos_i2c_write_reg_bits_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitStart, uint8_t length, uint8_t value);
 
-bool mgos_i2c_write_reg_bitsW(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum, uint8_t length, uint16_t value);
+bool mgos_i2c_write_reg_bits_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum, uint8_t length, uint16_t value);
 
 
 #endif // __MGOS_ADS1115_I2C
