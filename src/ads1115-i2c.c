@@ -101,28 +101,30 @@ float getMilliVolts(bool triggerAndPoll) {
 }
 
 float getMvPerCount() {
+	float result = 0.0;
   switch (pgaMode) {
     case MGOS_ADS1115_PGA_6P144:
-      return MGOS_ADS1115_MV_6P144;
+      result = MGOS_ADS1115_MV_6P144;
       break;    
     case MGOS_ADS1115_PGA_4P096:
-      return  MGOS_ADS1115_MV_4P096;
+      result =  MGOS_ADS1115_MV_4P096;
       break;             
     case MGOS_ADS1115_PGA_2P048:    
-      return MGOS_ADS1115_MV_2P048;
+      result = MGOS_ADS1115_MV_2P048;
       break;       
     case MGOS_ADS1115_PGA_1P024:     
-      return MGOS_ADS1115_MV_1P024;
+      result = MGOS_ADS1115_MV_1P024;
       break;       
     case MGOS_ADS1115_PGA_0P512:      
-      return MGOS_ADS1115_MV_0P512;
+      result = MGOS_ADS1115_MV_0P512;
       break;       
     case MGOS_ADS1115_PGA_0P256:           
     case MGOS_ADS1115_PGA_0P256B:          
     case MGOS_ADS1115_PGA_0P256C:      
-      return MGOS_ADS1115_MV_0P256;
+      result = MGOS_ADS1115_MV_0P256;
       break;       
   }
+  return result;
 }
 
 // CONFIG register
@@ -260,7 +262,7 @@ void setComparatorQueueMode(uint8_t mode) {
 // *_THRESH registers
 
 int16_t getThreshold(bool isLow) {
-		int16_t	threshold;
+		int16_t	threshold = 0;
 		int val = mgos_i2c_read_reg_w(i2c, devAddr, isLow ? MGOS_ADS1115_REG_LO_THR : MGOS_ADS1115_REG_HI_THR);
     if (val != -1) {
     	threshold = (uint16_t) val;
