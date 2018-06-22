@@ -259,7 +259,7 @@ void setComparatorQueueMode(uint8_t mode) {
 
 int16_t getThreshold(bool isLow) {
 		int16_t	threshold;
-		int val = mgos_i2c_read_reg_w(i2c, devAddr, isLow ? MGOS_ADS1115_REG_LO_THRESH : MGOS_ADS1115_REG_HI_THRESH);
+		int val = mgos_i2c_read_reg_w(i2c, devAddr, isLow ? MGOS_ADS1115_REG_LO_THR : MGOS_ADS1115_REG_HI_THR);
     if (val != -1) {
     	threshold = (uint16_t) val;
     }
@@ -267,7 +267,7 @@ int16_t getThreshold(bool isLow) {
 }
 
 void setThreshold(bool isLow, uint16_t threshold) {
-	mgos_i2c_write_reg_w(i2c, devAddr, isLow ? MGOS_ADS1115_REG_LO_THRESH : MGOS_ADS1115_REG_HI_THRESH, threshold);
+	mgos_i2c_write_reg_w(i2c, devAddr, isLow ? MGOS_ADS1115_REG_LO_THR : MGOS_ADS1115_REG_HI_THR, threshold);
 }
 
 int16_t getLowThreshold() {
@@ -287,8 +287,8 @@ void setHighThreshold(int16_t threshold) {
 }
 
 void setConversionReadyPinMode() {
-		mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_HI_THRESH, 15, 1);
-		mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_HO_THRESH, 15, 0);
+		mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_HI_THR, 15, 1);
+		mgos_i2c_write_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_HO_THR, 15, 0);
     setComparatorPolarity(0);
     setComparatorQueueMode(0);
 }

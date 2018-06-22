@@ -134,7 +134,7 @@ bool getComparatorPolarity();
 void setComparatorPolarity(bool polarity);
 bool getComparatorLatchEnabled();
 void setComparatorLatchEnabled(bool enabled);
-uint8_t getComparatorQueueMode();
+uint16_t getComparatorQueueMode();
 void setComparatorQueueMode(uint8_t mode);
 void setConversionReadyPinMode();
 
