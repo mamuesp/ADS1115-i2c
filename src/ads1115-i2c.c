@@ -127,8 +127,6 @@ float getMvPerCount() {
   return result;
 }
 
-// CONFIG register
-
 bool isConversionReady() {
 	int w = mgos_i2c_read_reg_bit_w(i2c, devAddr, MGOS_ADS1115_REG_CFG, MGOS_ADS1115_CFG_OS_BIT);
 	return (w == 1);
