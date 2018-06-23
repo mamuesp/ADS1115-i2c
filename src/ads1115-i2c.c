@@ -309,7 +309,6 @@ uint16_t shiftDown(uint16_t extractFrom, int places) {
   return (extractFrom >> places);
 }
 
-
 uint16_t getValueFromBits(uint16_t extractFrom, int high, int length) {
    int low= high-length +1;
    uint16_t mask = createMask(low ,high);
@@ -341,6 +340,7 @@ void showConfigRegister() {
 	LOG(LL_INFO, ("CMP_QUE:\t %d", getValueFromBits(confReg, MGOS_ADS1115_CFG_COMP_QUE_BIT, MGOS_ADS1115_CFG_COMP_QUE_LENGTH)));    
 };
 
+/*
 int mgos_i2c_read_reg_bit_b(struct mgos_i2c *conn, uint16_t addr, uint8_t reg, uint8_t bitNum) {
    	int result = -1;
     int val = mgos_i2c_read_reg_b(conn, addr, reg);
@@ -438,4 +438,4 @@ bool mgos_i2c_write_reg_bits_w(struct mgos_i2c *conn, uint16_t addr, uint8_t reg
 		}
 		return result;
 }
-
+*/
