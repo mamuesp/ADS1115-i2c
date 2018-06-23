@@ -1,4 +1,4 @@
-#include "ads1115-i2c.h"
+#include "ads1115_i2c.h"
 
 void init(uint8_t addr) {
 	devAddr = addr == 0 ? MGOS_ADS1115_ADD_DEFAULT : addr;
